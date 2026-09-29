@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro — Rosa de Ouro</title>
+  <meta name="description" content="Cadastre-se na Associação Rosa de Ouro.">
+  <meta name="theme-color" content="#b0405c">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="brand" href="index.html"><span aria-hidden="true">✿</span> Rosa de Ouro</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
+      <nav id="menu" class="nav" aria-label="Principal"><a href="index.html">← Voltar ao site</a><a class="btn btn-small" href="admin.html">Área do administrador</a></nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Participe</p>
+          <h1>Cadastro</h1>
+          <p>Preencha seus dados. A equipe da associação entrará em contato.</p>
+        </header>
+        <form class="form-box" id="form-cad" novalidate>
+          <div class="status" id="status" role="status" hidden></div>
+          <div class="field"><label for="nome">Nome completo </label><input id="nome" name="nome" type="text" required autocomplete="name"><p class="err" id="e-nome"></p></div>
+          <div class="field"><label for="email">E-mail </label><input id="email" name="email" type="email" required autocomplete="email"><p class="err" id="e-email"></p></div>
+          <div class="field"><label for="cpf">CPF </label><input id="cpf" name="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00"><p class="err" id="e-cpf"></p></div>
+          <div class="field"><label for="endereco">Endereço <small>(rua, número, bairro)</small></label><input id="endereco" name="endereco" type="text" required autocomplete="street-address"><p class="err" id="e-endereco"></p></div>
+          <div class="field"><label for="cras">CRAS <small>(opcional, se você tiver)</small></label><input id="cras" name="cras" type="text" ><p class="err" id="e-cras"></p></div>
+          <p><small>Seus dados são usados apenas pela associação para organizar o atendimento e as oficinas (LGPD).</small></p>
+          <button class="btn" type="submit">Enviar cadastro</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot">
+      <p><strong>✿ Associação Rosa de Ouro</strong><br>Projeto de extensão, Ciência da Computação.</p>
+      <p><a href="index.html">Site da associação</a><br><small>© <span id="ano">2026</span> Rosa de Ouro</small></p>
+    </div>
+  </footer>
+  <script src="cadastro.js" defer></script>
+</body>
+</html>

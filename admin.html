@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Área do administrador — Rosa de Ouro</title>
+  <meta name="description" content="Acesso restrito da equipe.">
+  <meta name="theme-color" content="#b0405c">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="brand" href="index.html"><span aria-hidden="true">✿</span> Rosa de Ouro</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
+      <nav id="menu" class="nav" aria-label="Principal"><a href="index.html">← Site da associação</a><a class="btn btn-small" href="#" id="sair" hidden>Sair</a></nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="section" id="login-box">
+      <div class="container">
+        <header class="section-head">
+          <span class="badge">Acesso da equipe</span>
+          <h1>Área do administrador</h1>
+        </header>
+        <form class="form-box" id="form-login" novalidate>
+          <div class="status" id="login-msg" role="alert" hidden></div>
+          <div class="field"><label for="a-email">E-mail</label><input id="a-email" type="email" autocomplete="username" required></div>
+          <div class="field"><label for="a-senha">Senha</label><input id="a-senha" type="password" autocomplete="current-password" required></div>
+          <button class="btn" type="submit">Entrar</button>
+        </form>
+      </div>
+    </section>
+
+    <div id="painel" hidden>
+      <section id="cadastros" class="section">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow">Pessoas que se cadastraram</p>
+            <h2>Cadastros <small id="total"></small></h2>
+          </header>
+          <div class="toolbar">
+            <input id="busca" type="search" placeholder="Buscar por nome, e-mail, CPF ou CRAS" aria-label="Buscar cadastros">
+            <button class="btn btn-small" id="csv" type="button">Exportar CSV</button>
+          </div>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Lista de cadastros">
+            <table>
+              <thead><tr><th scope="col">Nome</th><th scope="col">E-mail</th><th scope="col">CPF</th><th scope="col">Endereço</th><th scope="col">CRAS</th><th scope="col">Data</th><th scope="col"><span class="sr">Ações</span></th></tr></thead>
+              <tbody id="linhas"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section alt">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow">Indicadores gerais</p>
+            <h2>Dashboard</h2>
+          </header>
+          <div class="dash" id="dash-box">
+            <div class="dash-bar"><span>rosadigital.onrender.com</span><a href="https://rosadigital.onrender.com/" target="_blank" rel="noopener">Abrir em nova aba ↗</a></div>
+            <div class="dash-body">
+              <p class="dash-msg" id="dash-msg">Carregue o painel ao vivo aqui mesmo. Na primeira abertura pode levar alguns segundos.</p>
+              <button class="btn" id="dash-load" type="button">Carregar dashboard</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container foot">
+      <p><strong>✿ Associação Rosa de Ouro</strong><br>Projeto de extensão, Ciência da Computação.</p>
+      <p><a href="index.html">Site da associação</a><br><small>© <span id="ano">2026</span> Rosa de Ouro</small></p>
+    </div>
+  </footer>
+  <script src="admin.js" defer></script>
+</body>
+</html>
