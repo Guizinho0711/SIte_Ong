@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Associação Rosa de Ouro — Acolhimento, oficinas e comunidade</title>
+  <meta name="description" content="Associação Rosa de Ouro: espaço comunitário voluntário com oficinas, atendimento psicológico, biblioteca, entrega de leite e cadastro de famílias.">
+  <meta name="theme-color" content="#b0405c">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="config.js" defer></script>
+  <script src="db.js" defer></script>
+  <script src="public.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container bar">
+      <a class="brand" href="#inicio" aria-label="Rosa de Ouro, início"><span aria-hidden="true">✿</span> Rosa de Ouro</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
+      <nav id="menu" class="nav" aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#atividades">Atividades</a>
+        <a href="#grade">Grade</a>
+        <a href="#publico">Público</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#mudanca">Mudança</a>
+        <a href="#portal">Portal do usuário</a>
+        <a class="btn btn-small" href="admin.html">Área do administrador</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Associação comunitária · Projeto de extensão</p>
+          <h1>Um espaço pequeno com um cuidado <em>enorme</em>.</h1>
+          <p class="lead">A Associação Rosa de Ouro acolhe mulheres, idosos e crianças com oficinas, atendimento e afeto, movida inteiramente por voluntários.</p>
+          <div class="actions">
+            <a class="btn" href="#atividades">Conheça as atividades</a>
+            <a class="btn btn-ghost" href="#portal">Portal do usuário</a>
+          </div>
+        </div>
+        <ul class="stats" aria-label="Números da associação">
+          <li><strong data-count="9">9</strong><span>atividades e serviços</span></li>
+          <li><strong data-count="15">15</strong><span>vagas máx. por oficina</span></li>
+          <li><strong data-count="3">3</strong><span>festas por ano</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="galeria" class="section" hidden aria-label="Fotos da associação">
+      <div class="container">
+        <div class="slider"><button class="prev" type="button" aria-label="Foto anterior">‹</button><div class="slides"></div><button class="next" type="button" aria-label="Próxima foto">›</button></div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Estrutura e funcionamento</p>
+          <h2>Sobre o espaço</h2>
+        </header>
+        <div class="cards three">
+          <article class="card"><h3>Pequeno e dinâmico</h3><p>O local é fisicamente pequeno, mas funciona de forma dinâmica: mesas e layout são reorganizados conforme a atividade do dia.</p></article>
+          <article class="card"><h3>Movido por voluntários</h3><p>Todos os funcionários são voluntários. Viviane, responsável pelo espaço, cuida de praticamente tudo.</p></article>
+          <article class="card"><h3>Biblioteca própria</h3><p>O espaço mantém uma biblioteca e apresenta salas dedicadas a diferentes oficinas e serviços comunitários.</p></article>
+        </div>
+        <p class="note">As oficinas têm capacidade limitada — algumas com <strong>máximo de 15 pessoas</strong>, com distribuição de vagas por sistema de senha.</p>
+      </div>
+    </section>
+
+    <section id="atividades" class="section alt">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">O que oferecemos</p>
+          <h2>Atividades e serviços</h2>
+        </header>
+        <div class="filters" role="group" aria-label="Filtrar atividades">
+          <button class="chip active" data-filter="todas" aria-pressed="true">Todas</button>
+          <button class="chip" data-filter="oficina" aria-pressed="false">Oficinas</button>
+          <button class="chip" data-filter="saude" aria-pressed="false">Saúde e bem-estar</button>
+          <button class="chip" data-filter="apoio" aria-pressed="false">Apoio social</button>
+        </div>
+        <ul class="cards four list" id="lista-atividades">
+          <li class="card" data-cat="oficina"><span class="ico" aria-hidden="true">🧶</span><h3>Ouricurilar</h3><p>Oficina de artesanato.</p></li>
+          <li class="card" data-cat="saude"><span class="ico" aria-hidden="true">🧠</span><h3>Atendimento psicológico</h3><p>Parceria com programa do governo e posto de saúde, em dias específicos.</p></li>
+          <li class="card" data-cat="apoio"><span class="ico" aria-hidden="true">🥛</span><h3>Entrega de leite</h3><p>Distribuição para famílias atendidas.</p></li>
+          <li class="card" data-cat="oficina"><span class="ico" aria-hidden="true">💃</span><h3>Dança</h3><p>Inclui dança cigana.</p></li>
+          <li class="card" data-cat="saude"><span class="ico" aria-hidden="true">🧘</span><h3>Pilates e alongamento</h3><p>Movimento e cuidado com o corpo.</p></li>
+          <li class="card" data-cat="oficina"><span class="ico" aria-hidden="true">🎨</span><h3>Pintura</h3><p>Expressão artística em grupo.</p></li>
+          <li class="card" data-cat="oficina"><span class="ico" aria-hidden="true">📚</span><h3>Grupo de leitura</h3><p>Estímulo a atividades fora do celular.</p></li>
+          <li class="card" data-cat="oficina"><span class="ico" aria-hidden="true">💻</span><h3>Informática</h3><p>Aulas do pacote Office.</p></li>
+          <li class="card" data-cat="apoio"><span class="ico" aria-hidden="true">🏠</span><h3>Cadastro de famílias</h3><p>Registro das famílias atendidas.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="grade" class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Dias observados na visita</p>
+          <h2>Grade semanal</h2>
+        </header>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Grade semanal, role para ver mais">
+          <table>
+            <caption class="sr">Atividades por dia da semana</caption>
+            <thead><tr><th scope="col">Dia</th><th scope="col">Atividades</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Quarta-feira</th><td>Dança cigana, alongamento, grupo de leitura, entrega de leite, cadastro de família</td></tr>
+              <tr><th scope="row">Sexta-feira</th><td>Pintura</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="publico" class="section alt">
+      <div class="container split">
+        <div>
+          <header class="section-head">
+            <p class="eyebrow">Quem atendemos</p>
+            <h2>Público atendido</h2>
+          </header>
+          <p>Um público relativamente pequeno, de perfil mais humilde, formado sobretudo por:</p>
+          <ul class="pills">
+            <li>Mulheres, incluindo vítimas de violência</li>
+            <li>Idosos</li>
+            <li>Crianças</li>
+          </ul>
+          <p>Eventualmente, estagiários auxiliam nas atividades.</p>
+        </div>
+        <blockquote class="quote">
+          <p>O trabalho voluntário sustenta cada oficina, cada senha entregue e cada família cadastrada.</p>
+          <footer>— Síntese da visita extensionista</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="eventos" class="section">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Calendário anual</p>
+          <h2>Três festas por ano</h2>
+          <p>Com entrega de brinquedos à comunidade.</p>
+        </header>
+        <ol class="timeline">
+          <li><h3>Páscoa</h3><p>Primeira festa do ano.</p></li>
+          <li><h3>Dia das Crianças</h3><p>Já contou com um caminhão de brinquedos doado.</p></li>
+          <li><h3>Natal</h3><p>Encerramento do ciclo de festas.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="mudanca" class="section highlight">
+      <div class="container">
+        <h2>Nova casa no Cangaíba</h2>
+        <p>Após ser contemplado por um programa da prefeitura, o espaço será transferido para o <strong>bairro do Cangaíba</strong> até o <strong>final do ano</strong>.</p>
+      </div>
+    </section>
+
+    <section id="vagas" class="section" hidden>
+      <div class="container">
+        <header class="section-head"><p class="eyebrow">Atualizado pela associação</p><h2>Oficinas e vagas</h2></header>
+        <ul class="cards four list"></ul>
+      </div>
+    </section>
+
+    <section id="portal" class="section highlight-soft">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Rosa Digital · Portal do usuário</p>
+          <h2>Participe das nossas oficinas</h2>
+          <p>Faça seu cadastro e escolha as oficinas disponíveis pelo sistema Rosa Digital.</p>
+        </header>
+        <div class="cards three">
+          <article class="card"><span class="ico" aria-hidden="true">📝</span><h3>Cadastro de dados pessoais</h3><p>Registre seus dados e os da sua família para ser atendido pela associação.</p><p><a class="btn btn-small" href="https://rosadigital.onrender.com/" target="_blank" rel="noopener">Fazer cadastro ↗</a></p></article>
+          <article class="card"><span class="ico" aria-hidden="true">🎟️</span><h3>Consulta e inscrição em oficinas</h3><p>Veja as oficinas disponíveis e inscreva-se. Algumas têm no máximo 15 vagas.</p><p><a class="btn btn-small" href="https://rosadigital.onrender.com/" target="_blank" rel="noopener">Ver oficinas ↗</a></p></article>
+          <article class="card"><span class="ico" aria-hidden="true">📍</span><h3>Precisa de ajuda?</h3><p>Fale com a equipe presencialmente, no espaço da associação, nos dias de atividade.</p></article>
+        </div>
+        <h3 class="steps-title">Como participar</h3>
+        <ol class="timeline">
+          <li><h3>Cadastre-se</h3><p>Preencha seus dados pessoais no sistema.</p></li>
+          <li><h3>Escolha uma oficina</h3><p>Consulte as vagas e faça a inscrição.</p></li>
+          <li><h3>Compareça nos dias da atividade</h3><p>Sua presença é registrada e fica no seu histórico.</p></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container foot">
+      <p><strong>✿ Associação Rosa de Ouro</strong><br>Projeto de extensão universitária — Ciência da Computação.</p>
+      <p><a href="admin.html">Área do administrador</a><br><small>© <span id="ano">2026</span> Rosa de Ouro</small></p>
+    </div>
+  </footer>
+</body>
+</html>
