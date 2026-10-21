@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Associação Rosa de Ouro — Assistência social e convivência desde 1993</title>
+  <meta name="description" content="Associação Rosa de Ouro, no Jardim Santa Maria, em São Paulo: oficinas, convivência e apoio à comunidade. Veja as vagas e inscreva-se.">
+  <meta name="theme-color" content="#b0405c">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="config.js" defer></script>
+  <script src="db.js" defer></script>
+  <script src="public.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="container bar">
+      <a class="brand" href="#inicio" aria-label="Rosa de Ouro, início"><span aria-hidden="true">✿</span> Rosa de Ouro</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">☰</button>
+      <nav id="menu" class="nav" aria-label="Principal">
+        <a href="#historia">Nossa história</a>
+        <a href="#atividades">Atividades</a>
+        <a href="#avisos">Avisos</a>
+        <a href="#instagram">Instagram</a>
+        <a href="#participe">Participe</a>
+        <a class="btn btn-small" href="admin.html">Área da equipe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Assistência social · desde 1993</p>
+          <h1><em>“Feliz aquele que transfere o que sabe e aprende o que ensina.”</em></h1>
+          <p class="cite">Cora Coralina</p>
+          <p class="lead">A Associação Rosa de Ouro reúne oficinas, convivência e apoio para a comunidade do Jardim Santa Maria, em São Paulo.</p>
+          <div class="actions">
+            <a class="btn" href="#participe">Quero participar</a>
+            <a class="btn btn-ghost" href="#atividades">Ver atividades</a>
+          </div>
+        </div>
+        <ul class="stats" aria-label="Números atualizados">
+          <li><strong id="st-of">–</strong><span>atividades e serviços</span></li>
+          <li><strong id="st-livres">–</strong><span>vagas livres agora</span></li>
+          <li><strong id="st-insc">–</strong><span>inscrições em oficinas</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="historia" class="section alt">
+      <div class="container">
+        <header class="section-head"><p class="eyebrow">Quem somos</p><h2>Nossa história</h2></header>
+        <div class="split">
+          <div>
+            <p>Fundada em 1993, a Associação Rosa de Ouro é uma organização da sociedade civil que atua na assistência social, registrada como associação privada e em situação cadastral ativa.</p>
+            <p>Hoje funciona em um espaço pequeno que se transforma a cada dia: mesas e layout são reorganizados conforme a atividade. Tudo é mantido por voluntários, que cuidam das oficinas, da biblioteca e dos serviços oferecidos à comunidade.</p>
+            <p>Até o fim do ano, a associação se muda para o bairro do Cangaíba, depois de ser contemplada por um programa da prefeitura.</p>
+          </div>
+          <dl class="ficha">
+            <div><dt>Fundação</dt><dd>1993</dd></div>
+            <div><dt>CNPJ</dt><dd>73.267.908/0001-30</dd></div>
+            <div><dt>Natureza jurídica</dt><dd>Associação privada</dd></div>
+            <div><dt>Área de atuação</dt><dd>Assistência social</dd></div>
+            <div><dt>Situação cadastral</dt><dd>Ativa</dd></div>
+          </dl>
+        </div>
+        <ol class="timeline">
+          <li><h3>1993</h3><p>Fundação da associação e registro do CNPJ.</p></li>
+          <li><h3>Hoje</h3><p>Oficinas, convivência e apoio à comunidade, com equipe voluntária.</p></li>
+          <li><h3>Até o fim do ano</h3><p>Mudança para o bairro do Cangaíba.</p></li>
+        </ol>
+        <p class="fonte">Dados cadastrais: <a href="https://mapaosc.ipea.gov.br/detalhar/961033" target="_blank" rel="noopener">Mapa das OSC (Ipea)</a>.</p>
+      </div>
+    </section>
+
+    <section id="atividades" class="section">
+      <div class="container">
+        <header class="section-head"><p class="eyebrow">O que oferecemos</p><h2>Atividades e serviços</h2><p>Dias, horários e vagas atualizados pela própria associação.</p></header>
+        <div class="filters" role="group" aria-label="Filtrar atividades">
+          <button class="chip active" data-filter="todas" aria-pressed="true">Todas</button>
+          <button class="chip" data-filter="oficina" aria-pressed="false">Oficinas</button>
+          <button class="chip" data-filter="saude" aria-pressed="false">Saúde e bem-estar</button>
+          <button class="chip" data-filter="apoio" aria-pressed="false">Apoio social</button>
+        </div>
+        <ul class="cards four" id="lista-atividades"><li class="muted">Carregando atividades…</li></ul>
+        <div class="charts">
+          <figure class="chart"><figcaption>Vagas ocupadas por oficina</figcaption><div id="graf-vagas"></div></figure>
+          <figure class="chart"><figcaption>Atividades por área</figcaption><div id="graf-areas"></div></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="avisos" class="section alt">
+      <div class="container">
+        <header class="section-head"><p class="eyebrow">Fique por dentro</p><h2>Quadro de avisos</h2></header>
+        <div class="board" id="quadro"><p class="muted">Nenhum aviso no momento.</p></div>
+      </div>
+    </section>
+
+    <section id="instagram" class="section">
+      <div class="container">
+        <header class="section-head"><p class="eyebrow">Acompanhe nas redes</p><h2>Últimas publicações</h2></header>
+        <div class="insta-grid" id="insta-grid"></div>
+        <p><a class="btn" href="https://www.instagram.com/associacaorosadeouro/" target="_blank" rel="noopener">Ver o Instagram @associacaorosadeouro ↗</a></p>
+      </div>
+    </section>
+
+    <section id="participe" class="section alt">
+      <div class="container">
+        <header class="section-head"><p class="eyebrow">Cadastro e inscrição</p><h2>Participe das nossas oficinas</h2><p>Faça seu cadastro e escolha uma ou mais oficinas. É rápido.</p></header>
+        <div class="split">
+          <form id="f-cadastro" class="cad" aria-label="Cadastro e inscrição">
+            <label>Nome completo<input name="nome" required minlength="2" autocomplete="name"></label>
+            <label>Telefone para contato<input name="telefone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" pattern="[0-9 ()+\-]{10,20}"></label>
+            <label>E-mail<input name="email" type="email" autocomplete="email" placeholder="opcional"></label>
+            <label>CRAS de referência<input name="cras" autocomplete="off" placeholder="opcional"></label>
+            <fieldset class="oficinas-check">
+              <legend>Oficinas de interesse <span>(pode escolher mais de uma)</span></legend>
+              <div id="lista-check-oficinas"><p class="mut">Carregando oficinas...</p></div>
+            </fieldset>
+            <label class="chk"><input type="checkbox" name="aceite" required> Autorizo a associação a usar meus dados para contato e inscrição em oficinas.</label>
+            <label class="hp" aria-hidden="true">Não preencha<input name="site" tabindex="-1" autocomplete="off"></label>
+            <button class="btn">Fazer cadastro</button>
+            <p id="cad-aviso" class="note" role="status" aria-live="polite"></p>
+          </form>
+          <ol class="timeline">
+            <li><h3>Cadastre-se</h3><p>Informe seu nome e telefone de contato.</p></li>
+            <li><h3>Escolha as oficinas</h3><p>Consulte as vagas livres e marque as de interesse.</p></li>
+            <li><h3>Compareça nos dias da atividade</h3><p>Sua presença é registrada e fica no seu histórico.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container foot">
+      <p><strong>✿ Associação Rosa de Ouro</strong><br>CNPJ 73.267.908/0001-30<br>Projeto de extensão Rosa Digital.</p>
+      <address>Rua Tapaiuna, casa 01<br>Jardim Santa Maria, São Paulo/SP<br>CEP 03576-060<br><a href="tel:+551149483617">(11) 4948-3617</a></address>
+      <p><a href="https://www.instagram.com/associacaorosadeouro/" target="_blank" rel="noopener">Instagram ↗</a><br><a href="admin.html">Área da equipe</a><br><small>© <span id="ano">2026</span> Rosa de Ouro</small></p>
+    </div>
+  </footer>
+</body>
+</html>
