@@ -14,7 +14,17 @@
   };
   const run = async (p, ok) => { const { error } = await p; if (error) return msg('Erro: ' + error.message); msg(ok || ''); await load(); };
 
+  const bar = (n, pct, rot) => `<div class="bar"><span>${esc(n)}</span><div class="track"><i style="width:${pct}%"></i></div><em>${rot}</em></div>`;
+  function dashboard() {
+    const total = pe.length, conf = pe.filter(p => p.confirmado).length;
+    const usados = o => ints.filter(x => x.oficina_id === o.id).length;
+    const livres = of.reduce((s, o) => o.vagas == null ? s : s + Math.max(o.vagas - usados(o), 0), 0);
+    $('#kpis').innerHTML = [[total, 'pessoas cadastradas'], [conf, 'e-mails confirmados'], [ints.length, 'inscrições'], [livres, 'vagas livres']].map(([n, t]) => `<div class="kpi"><strong>${n}</strong><span>${t}</span></div>`).join('');
+    $('#d-ofic').innerHTML = of.filter(o => o.vagas != null).map(o => bar(o.nome, Math.min(100, Math.round(usados(o) / o.vagas * 100)), `${usados(o)}/${o.vagas}`)).join('') || '<p class="muted">Sem dados ainda.</p>';
+    $('#d-conf').innerHTML = bar('Confirmados', total ? Math.round(conf / total * 100) : 0, conf) + bar('Pendentes', total ? Math.round((total - conf) / total * 100) : 0, total - conf);
+  }
   function draw() {
+    dashboard();
     $('#lista-oficinas').innerHTML = of.map(o => {
       const mem = ints.filter(x => x.oficina_id === o.id);
       const livres = pe.filter(p => !mem.some(m => m.pessoa_id === p.id));

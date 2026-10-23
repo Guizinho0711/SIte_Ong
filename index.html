@@ -113,19 +113,18 @@
       <div class="container">
         <header class="section-head"><p class="eyebrow">Cadastro e inscrição</p><h2>Participe das nossas oficinas</h2><p>Faça seu cadastro e escolha uma ou mais oficinas. É rápido.</p></header>
         <div class="split">
-          <form id="f-cadastro" class="cad" aria-label="Cadastro e inscrição">
+          <form id="f-cadastro" class="cad min" aria-label="Cadastro e inscrição">
             <label>Nome completo<input name="nome" required minlength="2" autocomplete="name"></label>
-            <label>Telefone para contato<input name="telefone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" pattern="[0-9 ()+\-]{10,20}"></label>
-            <label>E-mail<input name="email" type="email" autocomplete="email" placeholder="opcional"></label>
-            <label>CRAS de referência<input name="cras" autocomplete="off" placeholder="opcional"></label>
+            <label>Telefone (WhatsApp)<input name="telefone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="(11) 90000-0000" pattern="[0-9 ()+\-]{10,20}"></label>
+            <label>E-mail<input name="email" type="email" required autocomplete="email" inputmode="email" placeholder="voce@email.com"></label>
             <fieldset class="oficinas-check">
-              <legend>Oficinas de interesse <span>(pode escolher mais de uma)</span></legend>
+              <legend>Oficinas de interesse</legend>
               <div id="lista-check-oficinas"><p class="mut">Carregando oficinas...</p></div>
             </fieldset>
-            <label class="chk"><input type="checkbox" name="aceite" required> Autorizo a associação a usar meus dados para contato e inscrição em oficinas.</label>
+            <details><summary>Informar CRAS de referência (opcional)</summary><label><input name="cras" autocomplete="off" aria-label="CRAS de referência"></label></details>
+            <label class="chk"><input type="checkbox" name="aceite" required> Sou maior de 18 anos ou responsável legal pela pessoa cadastrada e aceito os <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a> e a <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.</label>
             <label class="hp" aria-hidden="true">Não preencha<input name="site" tabindex="-1" autocomplete="off"></label>
             <button class="btn">Fazer cadastro</button>
-            <p id="cad-aviso" class="note" role="status" aria-live="polite"></p>
           </form>
           <ol class="timeline">
             <li><h3>Cadastre-se</h3><p>Informe seu nome e telefone de contato.</p></li>
@@ -141,8 +140,14 @@
     <div class="container foot">
       <p><strong>✿ Associação Rosa de Ouro</strong><br>CNPJ 73.267.908/0001-30<br>Projeto de extensão Rosa Digital.</p>
       <address>Rua Tapaiuna, casa 01<br>Jardim Santa Maria, São Paulo/SP<br>CEP 03576-060<br><a href="tel:+551149483617">(11) 4948-3617</a></address>
-      <p><a href="https://www.instagram.com/associacaorosadeouro/" target="_blank" rel="noopener">Instagram ↗</a><br><a href="admin.html">Área da equipe</a><br><small>© <span id="ano">2026</span> Rosa de Ouro</small></p>
+      <p><a href="https://www.instagram.com/associacaorosadeouro/" target="_blank" rel="noopener">Instagram ↗</a><br><a href="termos.html">Termos de Uso</a><br><a href="privacidade.html">Política de Privacidade</a><br><a href="admin.html">Área da equipe</a><br><small>© <span id="ano">2026</span> Rosa de Ouro</small></p>
     </div>
   </footer>
+  <dialog id="modal" class="modal" aria-labelledby="modal-t">
+    <span id="modal-ico" class="ok" aria-hidden="true">✓</span>
+    <h2 id="modal-t">Cadastro realizado!</h2>
+    <p id="modal-p"></p>
+    <button class="btn" id="modal-ok" type="button">Entendi</button>
+  </dialog>
 </body>
 </html>

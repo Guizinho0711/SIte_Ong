@@ -3,17 +3,23 @@
   const ICO = { oficina: '🎨', saude: '🧘', apoio: '🤝' };
   const AREAS = { oficina: 'Oficinas', saude: 'Saúde e bem-estar', apoio: 'Apoio social' };
 
-  const form = $('f-cadastro'), aviso = $('cad-aviso');
+  const form = $('f-cadastro'), modal = $('modal');
+  const popup = (ok, t, txt) => {
+    $('modal-ico').textContent = ok ? '✓' : '!'; $('modal-ico').classList.toggle('erro', !ok);
+    $('modal-t').textContent = t; $('modal-p').textContent = txt;
+    modal.showModal ? modal.showModal() : alert(t + '\n' + txt);
+  };
+  $('modal-ok').addEventListener('click', () => modal.close());
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    if (form.site.value) return;
-    if (!db) { aviso.textContent = 'Cadastro indisponível no momento. Procure a equipe no espaço.'; return; }
+    if (form.elements.site.value) return;
+    if (!db) { popup(false, 'Cadastro indisponível', 'Procure a equipe no espaço da associação.'); return; }
     const escolhidas = [...form.querySelectorAll('input[name="oficinas"]:checked')].map(c => +c.value);
     const btn = form.querySelector('button'); btn.disabled = true;
-    const { error } = await db.rpc('cadastrar', { p_nome: form.nome.value, p_telefone: form.telefone.value, p_email: form.email.value, p_cras: form.cras.value, p_oficinas: escolhidas.length ? escolhidas : null });
+    const { error } = await db.rpc('cadastrar', { p_nome: form.elements.nome.value, p_telefone: form.elements.telefone.value, p_email: form.elements.email.value, p_cras: form.elements.cras.value, p_oficinas: escolhidas.length ? escolhidas : null });
     btn.disabled = false;
-    if (error) { aviso.textContent = /lotada/i.test(error.message) ? 'Uma das oficinas escolhidas está lotada. Ajuste a seleção ou fale com a equipe.' : 'Não foi possível concluir. Confira os dados e tente de novo.'; return; }
-    aviso.textContent = 'Cadastro realizado! A equipe entrará em contato pelo telefone informado.';
+    if (error) { /lotada/i.test(error.message) ? popup(false, 'Oficina lotada', 'Uma das oficinas escolhidas está lotada. Ajuste a seleção ou fale com a equipe.') : popup(false, 'Não foi possível concluir', 'Confira os dados, principalmente o e-mail, e tente de novo.'); return; }
+    popup(true, 'Cadastro realizado!', 'Obrigado por se cadastrar na Associação Rosa de Ouro. A equipe entrará em contato pelo telefone informado.');
     form.reset();
   });
 
